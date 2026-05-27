@@ -1,0 +1,13 @@
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Local environment files
+.env
+.env.*
+
+# Temporary output
+tmp/

@@ -1,0 +1,23 @@
+[user]
+  name = {{ .name | quote }}
+  email = {{ .email | quote }}
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = false
+
+[rebase]
+  autoStash = true
+
+[core]
+  editor = vim
+
+{{ if .git_signing_key }}
+[user]
+  signingkey = {{ .git_signing_key | quote }}
+
+[commit]
+  gpgsign = true
+{{ end }}

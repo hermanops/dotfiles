@@ -1,0 +1,25 @@
+name: Chezmoi Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install chezmoi
+        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+
+      - name: Dry-run apply in isolated destination
+        env:
+          PATH: ${{ env.PATH }}:$HOME/.local/bin
+        run: |
+          TMP_HOME="$(mktemp -d)"
+          chezmoi init --source="$GITHUB_WORKSPACE" --destination "$TMP_HOME"
+          chezmoi apply --dry-run --verbose --source="$GITHUB_WORKSPACE" --destination "$TMP_HOME"

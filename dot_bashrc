@@ -1,0 +1,9 @@
+# shellcheck shell=bash
+
+# Keep user-local overrides separate.
+if [ -f "$HOME/.bashrc.local" ]; then
+  . "$HOME/.bashrc.local"
+fi
+
+export EDITOR="vim"
+export PAGER="less"

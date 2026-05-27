@@ -1,0 +1,13 @@
+# Ignore files that do not apply to this platform.
+{{ if ne .chezmoi.os "linux" -}}
+dot_config/systemd/**
+{{ end -}}
+
+{{ if ne .chezmoi.os "darwin" -}}
+dot_config/karabiner/**
+{{ end -}}
+
+# Example host-specific ignore
+{{ if ne .chezmoi.hostname "work-laptop" -}}
+private_dot_ssh/work_config
+{{ end -}}
