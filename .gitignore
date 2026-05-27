@@ -39,3 +39,23 @@ coverage/
 *.pfx
 *.kdbx
 *.agekey
+
+# Linux and shell dotfiles local state
+.bash_history
+.zsh_history
+.zhistory
+.lesshst
+.python_history
+.wget-hsts
+
+# Python and scripting scratch artifacts
+__pycache__/
+*.pyc
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Chezmoi and local test scratch
+.tmp/
+.work/
